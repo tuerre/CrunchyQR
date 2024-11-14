@@ -172,3 +172,7 @@ input {
 @media (min-width: 1025px) {
     .main-content h1 { font-size: 4rem; }
 }
+
+input, button {
+    border: none;
+}
