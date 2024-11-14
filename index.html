@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/1d3efdbeda.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet">
+    <link rel="icon" href="/public/img/logo.webp" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <title>CrunchyQR - Crear Código QR Personalizado</title>
+</head>
+<body class="body">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="brand">
+            <span>CrunchyQR</span> by <a href="https://instagram.com/abreuendry_" target="_blank">Jendry</a>
+        </div>
+        <div class="menu">
+            <span><a href="/">Porfolio</a></span>
+            <span><a href="/">Github</a></span>
+            <span><a href="/">Terms</a></span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Create stunning QR <br> Codes IN SECONDS</h1>
+        <div class="video-container">
+            <center>
+                <video autoplay id="hero-video" muted playsinline loop>
+                    <source src="/public/video/introduction.MOV">
+                </video>
+            </center>
+        </div>
+    </main>
+
+    <!-- QR Code Section -->
+    <div class="qr-section">
+        <input id="text" type="text" placeholder="Ingrese la URL o texto a Generar" class="qr-input">
+        <button onclick="pasteClipboard()" id="pasteButton" class="btn-paste">Pegar enlace copiado</button>
+        <button onclick="generateQR()" id="generateButton" class="btn-generate">Generar QR</button>
+        <div id="qrcode" class="qrcode-container"></div>
+        <button id="downloadBtn" onclick="downloadQR()" class="btn-download hidden">Descargar QR</button>
+    </div>
+
+    <script>
+        const dropdownButton = document.getElementById('dropdownButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        dropdownButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+
+        function generateQR() {
+            const qrContainer = document.getElementById('qrcode');
+            const text = document.getElementById('text').value;
+            const downloadBtn = document.getElementById('downloadBtn');
+
+            qrContainer.innerHTML = ""; // Limpiar el contenedor del QR
+
+            if (text) {
+                const qrCode = new QRCode(qrContainer, {
+                    text: text,
+                    width: 256,
+                    height: 256
+                });
+
+                downloadBtn.classList.remove('hidden');
+            } else {
+                alert("Por favor, ingrese algún texto o enlace.");
+            }
+        }
+
+        async function pasteClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById('text').value = text;
+            } catch (err) {
+                console.error("Error al leer del portapapeles: ", err);
+            }
+        }
+
+        function downloadQR() {
+            const qrContainer = document.getElementById('qrcode').getElementsByTagName('img')[0];
+            if (qrContainer) {
+                const link = document.createElement('a');
+                link.href = qrContainer.src;
+                link.download = 'qrByCrunchy.png';
+                link.click();
+            } else {
+                alert("Por favor, genere un código QR antes de descargar.");
+            }
+        }
+    </script>
+
+</body>
+</html>
