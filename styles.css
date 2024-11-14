@@ -116,10 +116,12 @@ a {
 
 .btn-paste {
     background-color: #e383ab;
+    transition: background-color 0.3s ease, filter 0.3s ease;
 }
 
 .btn-paste:hover {
     cursor: pointer;
+    filter: brightness(0.85);
 }
 
 .btn-generate {
