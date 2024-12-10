@@ -1,37 +1,109 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página no encontrada</title>
-  <style>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrunchyQR - Página no encontrada</title>
+    <link rel="icon" href="/logo.webp" type="image/png">
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f4f4f4;
-      color: #333;
-      padding: 2rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: #F1F1F4;
+    padding: 2rem;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
     }
-    h1 {
-      font-size: 4rem;
-      margin: 1rem 0;
+
+    ul {
+        list-style: none;
     }
-    p {
-      font-size: 1.2rem;
-    }
+
     a {
-      color: #0070f3;
-      text-decoration: none;
-      font-weight: bold;
+        text-decoration: none;
+        color: white;
+        font-size: 22px;
     }
-    a:hover {
-      text-decoration: underline;
+
+    /* Header */
+    .header {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1rem 4rem;
     }
-  </style>
-</head>
-<body>
-  <h1>404</h1>
-  <p>Lo sentimos, no encontramos lo que buscas.</p>
-  <p><a href="/">Volver al inicio</a></p>
-</body>
-</html>
+
+    .brand {
+        font-size: 32px;
+        font-weight: bold;
+        color: #D3D3D3;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .menu span {
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    /* Responsive Styles */
+
+    @media (max-width: 640px) {
+    .header { flex-direction: column; text-align: center; }
+    .menu { flex-direction: column; gap: 0.5rem; }
+}
+
+@media (max-width: 900px) {
+    .header { flex-direction: column; text-align: center; }
+    .menu { flex-direction: column; gap: 0.5rem; }
+}
+
+    .JendryLINK {
+        font-size: 28px;
+    }
+
+.JendryLINK:hover {
+    color: #09f;
+}
+
+.pineapple {
+    background-color: #161616;
+    text-align: center;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.pineappleSPAN {
+    font-size: 20px;
+}
+    </style>
+    </head>
+    <body>
+
+    <header class="header">
+        <div class="brand">
+            <span>CrunchyQR by <a href="https://instagram.com/abreuendry_" class="JendryLINK" target="_blank">Jendry</a></span>
+        </div>
+        <div class="menu">
+            <span><a href="httpa://akaporfolio.vercel.app" target="_blank">Porfolio</a></span>
+            <span><a href="https://github.com/tuerre/CrunchyQR" target="_blank">Github</a></span>
+            <span><a href="/terms.html" target="_blank">Terms</a></span>
+        </div>
+    </header>
+
+    <div class="pineapple">
+        <h2>404</h2>
+        <span class="pineappleSPAN">Esta página no fue encontrada</span>
+    </div>
+    </body>
+    </html>
